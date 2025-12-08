@@ -1,0 +1,10 @@
+{
+  "$schema": "../../meta.schema.json",
+  "name": "Ultracite",
+  "description": "A zero-config Biome preset enforcing strict code quality.",
+  "version": 1,
+  "submitter": "bensabic",
+  "category": "code-quality",
+  "tags": ["biome", "linting", "formatting", "typescript", "javascript"],
+  "hint": "./hint.md"
+}

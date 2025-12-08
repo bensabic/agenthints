@@ -1,0 +1,73 @@
+name: PR Checks
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+concurrency:
+  group: pr-checks-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    if: github.event.pull_request.draft == false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Type check
+        run: pnpm type-check
+
+      - name: Lint and format check
+        run: pnpm check
+
+      - name: Build hints registry
+        run: pnpm build-registry
+
+      - name: Build CLI package
+        run: pnpm --filter agenthints build
+
+      - name: Run tests
+        run: pnpm test
+        
+      - name: Get changed hints (if any)
+        id: changed-hints
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          CHANGED=$(git diff --name-only "origin/$BASE_REF" HEAD -- public/registry/hints/ | \
+            grep -oP 'public/registry/hints/\K[^/]+' | \
+            sort -u | \
+            tr '\n' ' ' || true)
+          echo "hints=$CHANGED" >> $GITHUB_OUTPUT
+
+      - name: Validate changed hints (if any)
+        if: steps.changed-hints.outputs.hints != ''
+        env:
+          CHANGED_HINTS: ${{ steps.changed-hints.outputs.hints }}
+        run: |
+          for hint in $CHANGED_HINTS; do
+            if [[ ! "$hint" =~ ^[a-zA-Z0-9_-]+$ ]]; then
+              echo "Invalid hint name: $hint"
+              exit 1
+            fi
+          done
+          pnpm validate-hints $CHANGED_HINTS

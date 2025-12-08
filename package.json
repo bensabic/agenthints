@@ -1,18 +1,61 @@
 {
-	"name": "agenthints",
-	"version": "0.0.0",
-	"private": true,
-	"scripts": {
-		"deploy": "wrangler deploy",
-		"dev": "wrangler dev",
-		"start": "wrangler dev",
-		"test": "vitest",
-		"cf-typegen": "wrangler types"
-	},
-	"devDependencies": {
-		"@cloudflare/vitest-pool-workers": "^0.8.19",
-		"typescript": "^5.5.2",
-		"vitest": "~3.2.0",
-		"wrangler": "^4.53.0"
-	}
+  "name": "agenthints-registry",
+  "description": "The registry for feeding hints to your AI software engineer.",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm build-registry && wrangler dev",
+    "deploy": "wrangler deploy",
+    "start": "wrangler dev",
+    "generate-types": "wrangler types",
+    "type-check": "tsc --noEmit",
+    "check": "npx ultracite check",
+    "fix": "npx ultracite fix",
+    "test": "vitest run",
+    "build-registry": "tsx scripts/build-registry.ts",
+    "validate-hints": "tsx scripts/validate-hints.ts",
+    "create-hint": "tsx scripts/create-hint.ts",
+    "update-changelog": "tsx scripts/update-changelog.ts"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.3.8",
+    "@clack/prompts": "^0.11.0",
+    "@cloudflare/vitest-pool-workers": "^0.8.19",
+    "@types/node": "^24.10.1",
+    "ajv": "^8.17.1",
+    "commander": "^14.0.2",
+    "picocolors": "^1.1.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.5.2",
+    "ultracite": "6.3.8",
+    "vitest": "~3.2.0",
+    "wrangler": "^4.53.0"
+  },
+  "packageManager": "pnpm@10.24.0+sha512.01ff8ae71b4419903b65c60fb2dc9d34cf8bb6e06d03bde112ef38f7a34d6904c424ba66bea5cdcf12890230bf39f9580473140ed9c946fef328b6e5238a345a",
+  "keywords": [
+    "ai",
+    "agents",
+    "cli",
+    "droid",
+    "codex",
+    "claude",
+    "gemini",
+    "cursor",
+    "copilot",
+    "hints",
+    "registry"
+  ],
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Ben Sabic",
+    "url": "https://bensabic.ca"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bensabic/agenthints.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bensabic/agenthints/issues"
+  },
+  "homepage": "https://github.com/bensabic/agenthints#readme"
 }
