@@ -1,0 +1,59 @@
+{
+  "name": "agenthints",
+  "displayName": "Agent Hints",
+  "description": "The registry for feeding hints to your AI software engineer.",
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "agenthints": "./dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.11.0",
+    "commander": "^14.0.2",
+    "picocolors": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "tsup": "^8.0.0",
+    "typescript": "^5.5.2",
+    "vitest": "~3.2.0"
+  },
+  "keywords": [
+    "ai",
+    "agents",
+    "llm",
+    "cli",
+    "droid",
+    "gpt",
+    "codex",
+    "claude",
+    "gemini",
+    "cursor",
+    "windsurf",
+    "copilot"
+  ],
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Ben Sabic",
+    "url": "https://bensabic.ca"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bensabic/agenthints.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bensabic/agenthints/issues"
+  },
+  "homepage": "https://agenthints.tech"
+}

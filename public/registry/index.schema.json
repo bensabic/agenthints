@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Registry Index Schema",
+  "description": "Schema for the auto-generated registry index",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Path to this schema file"
+    },
+    "hints": {
+      "type": "array",
+      "description": "List of all hints in the registry",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Folder name of the hint"
+          },
+          "name": {
+            "type": "string",
+            "description": "Display name of the hint"
+          },
+          "description": {
+            "type": "string",
+            "description": "Short description of the hint"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "code-quality",
+              "database",
+              "framework",
+              "api",
+              "auth",
+              "ui",
+              "testing",
+              "utils",
+              "other"
+            ],
+            "description": "Hint category for filtering/search"
+          },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Searchable tags"
+          },
+          "sha256": {
+            "type": "string",
+            "description": "SHA-256 hash of the hint content",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "required": [
+          "path",
+          "name",
+          "description",
+          "category",
+          "tags",
+          "sha256"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["$schema", "hints"],
+  "additionalProperties": false
+}
