@@ -32,10 +32,10 @@ jobs:
         run: pnpm check
 
       - name: Build CLI package
-        run: pnpm --filter agenthints build
+        run: pnpm cli:build
 
-      - name: Run tests
-        run: pnpm test
+      - name: Run CLI tests
+        run: pnpm cli:test
 
       - name: Build hints registry
         run: pnpm build-registry

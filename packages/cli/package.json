@@ -2,7 +2,7 @@
   "name": "agenthints",
   "displayName": "Agent Hints",
   "description": "The registry for feeding hints to your AI software engineer.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "engines": {
     "node": ">=20"

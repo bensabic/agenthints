@@ -1,7 +1,7 @@
 {
   "name": "agenthints-registry",
   "description": "The registry for feeding hints to your AI software engineer.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "pnpm build-registry && wrangler dev",
@@ -11,16 +11,17 @@
     "type-check": "tsc --noEmit",
     "check": "npx ultracite check",
     "fix": "npx ultracite fix",
-    "test": "vitest run",
     "build-registry": "tsx scripts/build-registry.ts",
     "validate-hints": "tsx scripts/validate-hints.ts",
     "create-hint": "tsx scripts/create-hint.ts",
-    "update-changelog": "tsx scripts/update-changelog.ts"
+    "update-changelog": "tsx scripts/update-changelog.ts",
+    "cli:build": "pnpm --filter agenthints build",
+    "cli:test": "pnpm --filter agenthints test",
+    "cli:dev": "pnpm build-registry && AGENTHINTS_REGISTRY=./public/registry tsx packages/cli/src/cli.ts"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.8",
     "@clack/prompts": "^0.11.0",
-    "@cloudflare/vitest-pool-workers": "^0.8.19",
     "@types/node": "^24.10.1",
     "ajv": "^8.17.1",
     "commander": "^14.0.2",

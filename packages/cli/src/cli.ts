@@ -9,7 +9,8 @@
 import { intro } from "@clack/prompts";
 import { Command } from "commander";
 
-declare const __VERSION__: string;
+declare const __VERSION__: string | undefined;
+const version = typeof __VERSION__ !== "undefined" ? __VERSION__ : "dev";
 
 import pc from "picocolors";
 import { agentNames } from "./agents";
@@ -29,7 +30,10 @@ ${pc.dim("The registry for feeding hints to your AI software engineer.")}
 program
   .name("Agent Hints")
   .description("The registry for feeding hints to your AI software engineer.")
-  .version(__VERSION__, "-v, --version", "Display the version number");
+  .version(version, "-v, --version", "Display the version number")
+  .action(() => {
+    program.help();
+  });
 
 program
   .command("init")

@@ -172,9 +172,9 @@ When you run `agenthints add`, the CLI:
 For append mode agents, hints are wrapped in HTML comment markers:
 
 ```markdown
-<!-- agenthints:ultracite:start -->
+<!-- agenthints:my-hint:start -->
 [hint content]
-<!-- agenthints:ultracite:end -->
+<!-- agenthints:my-hint:end -->
 ```
 
 This allows the CLI to:

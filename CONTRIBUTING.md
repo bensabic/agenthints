@@ -117,7 +117,7 @@ This checks:
 
 ### Submitting Your Hint
 
-When submitting a PR for a new hint, you must use the **Adding Hint** PR template located at `.github/PULL_REQUEST_TEMPLATE/adding_hint.md`.
+When submitting a PR for a new hint, use the [Adding Hint](https://github.com/bensabic/agenthints/blob/main/.github/PULL_REQUEST_TEMPLATE/adding_hint.md) PR template.
 
 ---
 
@@ -148,7 +148,7 @@ export type AgentConfig = {
 
 **Per-Resource Mode (`appendMode: false`)**
 
-- Each hint creates its own file (e.g., `.cursor/rules/ultracite.mdc`)
+- Each hint creates its own file (e.g., `.cursor/rules/my-hint.mdc`)
 - Use `{hint}` placeholder in path for the hint name
 - Good for agents that read multiple rule files
 
@@ -201,7 +201,7 @@ enabled: true
 
 ### Submitting Your Agent
 
-When submitting a PR for a new agent, you must use the **Adding AI Agent** PR template located at `.github/PULL_REQUEST_TEMPLATE/adding_ai_agent.md`.
+When submitting a PR for a new agent, use the [Adding AI Agent](https://github.com/bensabic/agenthints/blob/main/.github/PULL_REQUEST_TEMPLATE/adding_ai_agent.md) PR template.
 
 ---
 
@@ -240,8 +240,8 @@ pnpm check
 # Auto-fix lint/format issues
 pnpm fix
 
-# Run tests (includes CLI package tests)
-pnpm test
+# Run CLI tests
+pnpm cli:test
 
 # Create a new hint (interactive)
 pnpm create-hint
@@ -251,20 +251,22 @@ pnpm validate-hints           # Validate all hints
 pnpm validate-hints my-hint   # Validate specific hint
 ```
 
-**CLI package (`packages/cli`):**
+**CLI package:**
 
 ```bash
-cd packages/cli
+# Run CLI with local registry
+pnpm cli:dev add my-hint
+pnpm cli:dev list
+pnpm cli:dev --help
 
-# Build CLI
-pnpm build
+# Build CLI for production
+pnpm cli:build
 
-# Watch mode
-pnpm dev
-
-# Run tests
-pnpm test
+# Run CLI tests
+pnpm cli:test
 ```
+
+> **Tip:** Use `pnpm cli:dev` when testing new hints. It rebuilds the registry and uses local files instead of fetching from the remote registry.
 
 ### Project Structure
 
@@ -276,8 +278,8 @@ agenthints/
 │       │   └── <name>/
 │       │       ├── meta.json
 │       │       └── hint.md
-│       ├── index.json         # Generated registry index
-│       ├── index.schema.json
+│       ├── index.json          # Generated registry index
+│       ├── index.schema.json   # Registry index schema
 │       └── meta.schema.json    # Hint metadata schema
 ├── packages/
 │   └── cli/
@@ -305,13 +307,13 @@ Before submitting a PR, ensure:
 
 - [ ] **Code quality**: `pnpm check` passes (run `pnpm fix` to auto-fix)
 - [ ] **Type safety**: `pnpm type-check` passes
-- [ ] **Tests**: `pnpm test` passes
+- [ ] **Tests**: `pnpm cli:test` passes
 - [ ] **New hints validated**: `pnpm validate-hints <name>` passes (if adding hints)
 - [ ] **Use the correct PR template** (see below)
 
 ### For New Hints
 
-Use the PR template at `.github/PULL_REQUEST_TEMPLATE/adding_hint.md`:
+Use the [Adding Hint](https://github.com/bensabic/agenthints/blob/main/.github/PULL_REQUEST_TEMPLATE/adding_hint.md) PR template:
 
 - [ ] Follows the hint structure (`meta.json` + `hint.md`)
 - [ ] Description is under 100 characters
@@ -321,7 +323,7 @@ Use the PR template at `.github/PULL_REQUEST_TEMPLATE/adding_hint.md`:
 
 ### For New Agents
 
-Use the PR template at `.github/PULL_REQUEST_TEMPLATE/adding_ai_agent.md`:
+Use the [Adding AI Agent](https://github.com/bensabic/agenthints/blob/main/.github/PULL_REQUEST_TEMPLATE/adding_ai_agent.md) PR template:
 
 - [ ] Configuration added to `packages/cli/src/agents.ts`
 - [ ] Path pattern is correct (with `{hint}` for per-resource)
@@ -329,7 +331,7 @@ Use the PR template at `.github/PULL_REQUEST_TEMPLATE/adding_ai_agent.md`:
 
 ### For Bug Fixes
 
-Use the PR template at `.github/PULL_REQUEST_TEMPLATE/bug_fix.md`.
+Use the [Bug Fix](https://github.com/bensabic/agenthints/blob/main/.github/PULL_REQUEST_TEMPLATE/bug_fix.md) PR template.
 
 ---
 
