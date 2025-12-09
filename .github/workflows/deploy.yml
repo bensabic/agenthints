@@ -40,19 +40,6 @@ jobs:
       - name: Build hints registry
         run: pnpm build-registry
 
-      - name: Update project changelog
-        run: pnpm update-changelog
-
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore: update hints registry and project changelog"
-          file_pattern: |
-            public/registry/hints/**
-            CHANGELOG.md
-          add_options: '-f'
-          token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
-
       - name: Deploy to Cloudflare
         uses: cloudflare/wrangler-action@v3
         with:
