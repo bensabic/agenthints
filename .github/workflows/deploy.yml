@@ -50,6 +50,8 @@ jobs:
           file_pattern: |
             public/registry/hints/**
             CHANGELOG.md
+          add_options: '-f'
+          token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
 
       - name: Deploy to Cloudflare
         uses: cloudflare/wrangler-action@v3
