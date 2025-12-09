@@ -1,7 +1,7 @@
 {
   "name": "agenthints-registry",
   "description": "The registry for feeding hints to your AI software engineer.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "pnpm build-registry && wrangler dev",
