@@ -36,6 +36,9 @@ labels: bug
 
 ## Checklist
 
+- [ ] `pnpm check` passes
+- [ ] `pnpm type-check` passes
+- [ ] `pnpm cli:test` passes
 - [ ] Tested the fix locally
 - [ ] No breaking changes introduced
 - [ ] Updated relevant documentation (if applicable)

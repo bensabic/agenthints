@@ -132,7 +132,11 @@ export async function add(
 
     try {
       const metadata = await fetchHintMetadata(hintPath);
-      const hintContent = await fetchHintContent(hintPath, metadata.hint);
+      const hintContent = await fetchHintContent(
+        hintPath,
+        metadata.hint,
+        expectedHash
+      );
 
       // Verify integrity
       const actualHash = createHash("sha256").update(hintContent).digest("hex");

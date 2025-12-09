@@ -13,39 +13,25 @@ labels: enhancement
 **Agent Website:**
 <!-- Link to the agent's website or documentation -->
 
-**Rules File Path:**
-<!-- Where does this agent look for rules? e.g., .cursor/rules/, CLAUDE.md -->
-
-**Append Mode:**
-<!-- Does this agent use a single file for all rules (true) or separate files per hint (false)? -->
-
 ## Configuration
+
+<!-- Fill in the agent config. See CONTRIBUTING.md for details on each field. -->
 
 ```typescript
 {
   name: "",
   description: "",
-  path: "",
-  appendMode: true,
+  path: "",  // Use {hint} placeholder for per-resource mode
+  appendMode: true,  // true = single file, false = file per hint
+  // header: "",  // Optional: frontmatter if required by agent
 }
 ```
-
-## Header Format (if applicable)
-
-<!-- Does this agent require specific frontmatter or header format? -->
-
-```markdown
----
-example: frontmatter
----
-```
-
-## Documentation
-
-<!-- Link to documentation about this agent's rules format -->
 
 ## Checklist
 
 - [ ] Added agent config to `packages/cli/src/agents.ts`
-- [ ] Tested locally with `agenthints add <hint> --agent <new-agent>`
+- [ ] `pnpm check` passes
+- [ ] `pnpm type-check` passes
+- [ ] `pnpm cli:test` passes
+- [ ] Tested locally with `pnpm cli:local add <hint> --agent <new-agent>`
 - [ ] Verified output file format is correct

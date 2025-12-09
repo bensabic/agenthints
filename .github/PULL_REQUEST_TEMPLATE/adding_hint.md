@@ -8,20 +8,13 @@ labels: registry
 ## Hint Details
 
 **Hint Name:**
-<!-- e.g., Ultracite, Prisma, Drizzle -->
-
-**npm Package (if applicable):**
-<!-- e.g., ultracite, prisma, drizzle-orm -->
-
-**Repository:**
-<!-- Link to the hint's GitHub repository -->
+<!-- e.g., ultracite, prisma, drizzle -->
 
 **Category:**
 <!-- One of: code-quality, database, framework, api, auth, ui, testing, utils, other -->
 
-## Why should this be added?
-
-<!-- Brief explanation of why this hint would benefit AI agents -->
+**Description:**
+<!-- Brief one-line description (max 100 characters) -->
 
 ## Files Added
 
@@ -43,5 +36,8 @@ labels: registry
 - [ ] `meta.json` follows the schema
 - [ ] `hint.md` includes relevant commands
 - [ ] `hint.md` includes rules/guidelines for AI agents
-- [ ] Tested locally with `agenthints add <hint>`
+- [ ] `pnpm validate-hints <hint>` passes
+- [ ] `pnpm check` passes
+- [ ] `pnpm type-check` passes
+- [ ] Tested locally with `pnpm cli:local add <hint>`
 - [ ] I am the maintainer or have permission to submit these hints

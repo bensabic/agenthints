@@ -43,10 +43,10 @@ jobs:
         run: pnpm build-registry
 
       - name: Build CLI package
-        run: pnpm --filter agenthints build
+        run: pnpm cli:build
 
-      - name: Run tests
-        run: pnpm test
+      - name: Run CLI tests
+        run: pnpm cli:test
         
       - name: Get changed hints (if any)
         id: changed-hints

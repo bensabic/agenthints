@@ -107,9 +107,7 @@ async function build(): Promise<void> {
   await writeFile(INDEX_PATH, output, "utf-8");
 
   console.log(`\nGenerated ${INDEX_PATH}`);
-  console.log(
-    `Total ${pluralize(hints.length, "hint", "hints")}: ${hints.length}`
-  );
+  console.log(`Total hints: ${hints.length}`);
 }
 
 build().catch((error) => {
