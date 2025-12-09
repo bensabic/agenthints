@@ -14,7 +14,6 @@
     "build-registry": "tsx scripts/build-registry.ts",
     "validate-hints": "tsx scripts/validate-hints.ts",
     "create-hint": "tsx scripts/create-hint.ts",
-    "update-changelog": "tsx scripts/update-changelog.ts",
     "cli:build": "pnpm --filter agenthints build",
     "cli:test": "pnpm --filter agenthints test",
     "cli:dev": "pnpm build-registry && AGENTHINTS_REGISTRY=./public/registry tsx packages/cli/src/cli.ts"
