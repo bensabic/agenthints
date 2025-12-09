@@ -28,7 +28,7 @@ labels: bug
 - **OS:** <!-- e.g., macOS 14, Ubuntu 22.04, Windows 11 -->
 - **Node Version:** <!-- e.g., 20.11.0 -->
 - **Package Manager:** <!-- npm, pnpm, yarn, bun -->
-- **AgentHints Version:** <!-- e.g., 0.1.0 -->
+- **Agent Hints Version:** <!-- e.g., 0.1.0 -->
 
 ## Fix Description
 
